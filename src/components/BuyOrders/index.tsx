@@ -20,7 +20,7 @@ const BuyOrders: React.FunctionComponent = () => {
       <div className={styles.cards}>
         <p>Showing {buyOrders.length} results from </p>
         {buyOrders.map((buyOrder) => (
-          <BuyOrderCard buyOrder={buyOrder} />
+          <BuyOrderCard key={buyOrder.id} buyOrder={buyOrder} />
         ))}
       </div>
     </div>

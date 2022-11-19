@@ -1,12 +1,19 @@
 .card {
   padding: 1.5rem;
-  background-color: rgb(172, 255, 255);
   display: grid;
+  gap: 10px;
   grid-template-columns: 1fr 1fr 1fr;
   margin-top: 0.85rem;
   cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 
   &:hover {
     opacity: 0.75;
   }
+}
+
+.underlined {
+  text-decoration: underline;
+  margin-bottom: 5px;
 }
