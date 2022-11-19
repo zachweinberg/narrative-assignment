@@ -1,0 +1,30 @@
+.header {
+  padding: 1.5rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.navItems {
+  list-style: none;
+  display: flex;
+  align-items: center;
+
+  li {
+    margin-right: 1rem;
+  }
+
+  a {
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: #929292;
+    transition: 0.2s;
+
+    &:hover {
+      color: #000;
+    }
+  }
+}
+
+.active {
+  color: #000 !important;
+}
