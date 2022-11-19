@@ -10,11 +10,15 @@ const CountrySelect: React.FunctionComponent = () => {
 
   return (
     <div className={styles.container}>
-      <p>Included countries:</p>
+      <p className={styles.underlined}>Included countries:</p>
 
       <ul>
         {Object.entries(countries).map(([countryCode, name]) => {
-          return <li>{name}</li>;
+          return (
+            <li key={countryCode}>
+              <button>{name}</button>
+            </li>
+          );
         })}
       </ul>
     </div>

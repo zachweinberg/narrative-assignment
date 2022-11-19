@@ -22,9 +22,16 @@ const makeRequest = async (entityName: string, opts: AxiosRequestConfig) => {
 };
 
 export const fetchCountryData = async (): Promise<CountryData[]> => {
-  return makeRequest("countries", { url: "/countries" });
+  return makeRequest("countries", { url: "/countries", method: "GET" });
+};
+
+export const fetchBuyOrder = async (buyOrderID: number): Promise<BuyOrder> => {
+  return makeRequest(`buy-order/${buyOrderID}`, {
+    url: `/buy-orders/${buyOrderID}`,
+    method: "GET",
+  });
 };
 
 export const fetchBuyOrders = async (): Promise<BuyOrder[]> => {
-  return makeRequest("buy-orders", { url: "/buy-orders" });
+  return makeRequest("buy-orders", { url: "/buy-orders", method: "GET" });
 };

@@ -20,8 +20,7 @@ const useGlobalState = create<GlobalState>((set) => ({
     const countries = countryData.reduce(
       (accum, c) => ({
         ...accum,
-        name: c.name,
-        countryCode: c.countryCode,
+        [c.countryCode]: c.name,
       }),
       {}
     );

@@ -1,5 +1,29 @@
 .container {
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
+  padding: 0.7rem 1rem;
+  position: absolute;
+  bottom: 0;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin: 2rem;
+
+  p {
+    text-decoration: underline;
+    margin-bottom: 10px;
+  }
+
+  ul {
+    display: flex;
+    list-style: none;
+    gap: 12px;
+
+    button {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 5px 10px;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.75;
+      }
+    }
+  }
 }

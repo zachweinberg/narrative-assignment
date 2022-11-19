@@ -1,5 +1,5 @@
 export interface BuyOrder {
-  id: string;
+  id: number;
   budget: number;
   countries: string[];
   createdAt: string;

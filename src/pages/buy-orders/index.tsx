@@ -1,8 +1,8 @@
 import { NextPage } from "next";
-import BuyOrders from "~/components/BuyOrders";
+import BuyOrdersList from "~/components/BuyOrdersList";
 
 const BuyOrdersPage: NextPage = () => {
-  return <BuyOrders />;
+  return <BuyOrdersList />;
 };
 
 export default BuyOrdersPage;

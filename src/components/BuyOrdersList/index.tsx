@@ -1,8 +1,10 @@
 import { useBuyOrders } from "~/lib/hooks";
 import BuyOrderCard from "../BuyOrderCard";
-import styles from "./BuyOrders.module.scss";
+import CountrySelect from "../CountrySelect";
+import Loader from "../Loader";
+import styles from "./BuyOrdersList.module.scss";
 
-const BuyOrders: React.FunctionComponent = () => {
+const BuyOrdersList: React.FunctionComponent = () => {
   const { buyOrders, loading, error } = useBuyOrders();
 
   if (error) {
@@ -10,7 +12,7 @@ const BuyOrders: React.FunctionComponent = () => {
   }
 
   if (loading) {
-    return <p>loading</p>;
+    return <Loader />;
   }
 
   return (
@@ -23,8 +25,9 @@ const BuyOrders: React.FunctionComponent = () => {
           <BuyOrderCard key={buyOrder.id} buyOrder={buyOrder} />
         ))}
       </div>
+      <CountrySelect />
     </div>
   );
 };
 
-export default BuyOrders;
+export default BuyOrdersList;
