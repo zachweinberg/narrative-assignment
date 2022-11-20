@@ -6,6 +6,9 @@ const nextConfig = {
     includePaths: ["./src/styles"],
     prependData: `@import "variables.scss";`,
   },
+  images: {
+    domains: ["picsum.photos"],
+  },
   async redirects() {
     return [
       {

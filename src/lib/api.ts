@@ -26,20 +26,35 @@ const makeRequest = async (entityName: string, opts: AxiosRequestConfig) => {
 };
 
 export const fetchCountryData = async (): Promise<FetchCountryDataResponse> => {
-  return makeRequest("countries", { url: "/countries", method: "GET" });
+  return makeRequest("GET countries", { url: "/countries", method: "GET" });
 };
 
 export const fetchDatasets = async (): Promise<FetchDatasetsResponse> => {
-  return makeRequest("datasets", { url: "/datasets", method: "GET" });
+  return makeRequest("GET datasets", { url: "/datasets", method: "GET" });
 };
 
 export const fetchBuyOrder = async (buyOrderID: number): Promise<BuyOrder> => {
-  return makeRequest(`buy-order/${buyOrderID}`, {
+  return makeRequest(`GET buy-order/${buyOrderID}`, {
     url: `/buy-orders/${buyOrderID}`,
     method: "GET",
   });
 };
 
 export const fetchBuyOrders = async (): Promise<BuyOrder[]> => {
-  return makeRequest("buy-orders", { url: "/buy-orders", method: "GET" });
+  return makeRequest("GET buy-orders", { url: "/buy-orders", method: "GET" });
+};
+
+export const deleteBuyOrder = async (buyOrderID: number) => {
+  return makeRequest(`DELETE buy-order/${buyOrderID}`, {
+    url: `/buy-orders/${buyOrderID}`,
+    method: "DELETE",
+  });
+};
+
+export const createBuyOrder = async (buyOrder: Omit<BuyOrder, "id">) => {
+  return makeRequest("POST buy-order", {
+    url: `/buy-orders`,
+    method: "POST",
+    data: buyOrder,
+  });
 };

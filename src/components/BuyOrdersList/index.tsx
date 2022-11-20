@@ -1,13 +1,16 @@
+import { useRouter } from "next/router";
+import Button from "~/components/Button";
+import BuyOrderCard from "~/components/BuyOrderCard";
+import CountrySelect from "~/components/CountrySelect";
+import Error from "~/components/Error";
+import Heading from "~/components/Heading";
 import Loader from "~/components/Loader";
 import { useBuyOrders, useCountryConfig } from "~/lib/hooks";
-import BuyOrderCard from "../BuyOrderCard";
-import CountrySelect from "../CountrySelect";
-import Error from "../Error";
-import Heading from "../Heading";
 import styles from "./BuyOrdersList.module.scss";
 
 const BuyOrdersList: React.FunctionComponent = () => {
   const { buyOrders, loading, error } = useBuyOrders();
+  const router = useRouter();
   const { showAll, enabledCountryCodes, countryListString } =
     useCountryConfig();
 
@@ -40,6 +43,12 @@ const BuyOrdersList: React.FunctionComponent = () => {
         {countryBuyOrders.map((buyOrder) => (
           <BuyOrderCard key={buyOrder.id} buyOrder={buyOrder} />
         ))}
+        <Button
+          className="mt-20"
+          onClick={() => router.push("/buy-orders/new")}
+        >
+          Create Buy Order
+        </Button>
       </div>
 
       <CountrySelect />
