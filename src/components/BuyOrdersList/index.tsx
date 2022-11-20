@@ -3,6 +3,7 @@ import { useBuyOrders, useCountryConfig } from "~/lib/hooks";
 import BuyOrderCard from "../BuyOrderCard";
 import CountrySelect from "../CountrySelect";
 import Error from "../Error";
+import Heading from "../Heading";
 import styles from "./BuyOrdersList.module.scss";
 
 const BuyOrdersList: React.FunctionComponent = () => {
@@ -27,10 +28,10 @@ const BuyOrdersList: React.FunctionComponent = () => {
   }
 
   return (
-    <div className={styles.container}>
-      <h1>Your Buy Orders</h1>
+    <div className={styles.buyOrderList}>
+      <Heading text="Your Buy Orders" />
 
-      <div className={styles.cards}>
+      <div className={styles.widthContainer}>
         <p>
           Showing <strong>{countryBuyOrders.length}</strong> results from{" "}
           <strong> {countryListString}</strong>

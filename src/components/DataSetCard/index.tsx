@@ -1,4 +1,6 @@
+import cn from "classnames";
 import Link from "next/link";
+import useGlobalState from "~/lib/global-state";
 import { Dataset } from "~/lib/types";
 import { formatDollars } from "~/lib/utils";
 import styles from "./DatasetCard.module.scss";
@@ -8,6 +10,8 @@ interface Props {
 }
 
 const DatasetCard: React.FunctionComponent<Props> = ({ dataset }: Props) => {
+  const countries = useGlobalState((state) => state.countries);
+
   return (
     <Link legacyBehavior href={`/buy-orders/${dataset.id}`}>
       <a className={styles.card}>
@@ -17,30 +21,26 @@ const DatasetCard: React.FunctionComponent<Props> = ({ dataset }: Props) => {
         </div>
 
         <div>
-          <div className={styles.row}>
-            <p className={styles.underlined}>Dataset Description</p>
-            <p>{dataset.description}</p>
-          </div>
+          <p className="underlined mb-5">Dataset Description</p>
+          <p>{dataset.description}</p>
         </div>
 
         <div>
-          <div className={styles.flexRow}>
-            <p className={styles.underlined}>Cost per record</p>
+          <div className={cn([styles.flexRow, "mb-10"])}>
+            <p className="underlined">Cost per record</p>
             <p>{formatDollars(dataset.costPerRecord)}</p>
           </div>
 
-          <div className={styles.flexRow}>
-            <p className={styles.underlined}>Available Records</p>
+          <div className={cn([styles.flexRow, "mb-10"])}>
+            <p className="underlined">Available Records</p>
             <p>{dataset.totalRecordCount}</p>
           </div>
 
-          <div className={styles.row}>
-            <p className={styles.underlined}>Included Countries</p>
-          </div>
+          <p className="underlined mb-20">Included Countries</p>
 
           <div className={styles.countryBadges}>
-            {dataset.countries.map((c) => (
-              <span>{c}</span>
+            {dataset.countries.map((countryCode) => (
+              <span>{countries[countryCode].name}</span>
             ))}
           </div>
         </div>

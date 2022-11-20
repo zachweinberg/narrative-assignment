@@ -2,11 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  h1 {
-    font-weight: 600;
-    margin-bottom: 2rem;
-  }
+  color: $primary-text;
 }
 
 .card {
@@ -25,10 +21,4 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
   gap: 10px;
-}
-
-.underlined {
-  color: rgb(95, 95, 95);
-  text-decoration: underline;
-  margin-bottom: 5px;
 }

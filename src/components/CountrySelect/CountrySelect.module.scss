@@ -1,22 +1,17 @@
 .container {
-  padding: 0.7rem 1rem;
+  padding: 1rem;
   position: fixed;
   bottom: 0;
   margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
+  border: $default-border;
+  border-radius: $default-border-radius;
   z-index: 1000;
   background-color: #fff;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-
-  p {
-    text-decoration: underline;
-    margin-bottom: 10px;
-  }
+  box-shadow: $default-shadow;
 
   .enabled {
-    border: 1px solid black;
-    opacity: 1 !important;
+    background-color: rgb(64, 64, 64);
+    color: #fff;
   }
 
   ul {
@@ -26,14 +21,11 @@
 
     button {
       outline: none;
-      border: 1px solid #ccc;
-      border-radius: 10px;
+      border: none;
+      font-size: 1rem;
+      border-radius: $default-border-radius;
       padding: 5px 10px;
-      opacity: 0.5;
       cursor: pointer;
-      &:hover {
-        opacity: 0.75;
-      }
     }
   }
 }

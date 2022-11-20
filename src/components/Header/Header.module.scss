@@ -1,6 +1,6 @@
 .header {
   padding: 1.5rem;
-  border-bottom: 1px solid #ccc;
+  border-bottom: $default-border;
 }
 
 .navItems {
@@ -20,11 +20,11 @@
     transition: 0.2s;
 
     &:hover {
-      color: #000;
+      color: rgb(19, 19, 19);
     }
   }
 }
 
 .active {
-  color: #000 !important;
+  color: rgb(19, 19, 19) !important;
 }

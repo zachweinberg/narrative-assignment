@@ -10,17 +10,17 @@ interface Props {
 const BuyOrderCard: React.FunctionComponent<Props> = ({ buyOrder }: Props) => {
   return (
     <Link legacyBehavior href={`/buy-orders/${buyOrder.id}`}>
-      <a className={styles.card}>
+      <a className={styles.buyOrderCard}>
         <div>
-          <p className={styles.underlined}>Order name</p>
+          <p className="underlined mb-5">Order name</p>
           <p>{buyOrder.name}</p>
         </div>
         <div>
-          <p className={styles.underlined}>Date Created</p>
+          <p className="underlined mb-5">Date Created</p>
           <p>{formatDateFromString(buyOrder.createdAt)}</p>
         </div>
         <div>
-          <p className={styles.underlined}>Budget</p>
+          <p className="underlined mb-5">Budget</p>
           <p>{formatDollars(buyOrder.budget)}</p>
         </div>
       </a>

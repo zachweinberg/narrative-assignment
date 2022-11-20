@@ -1,15 +1,10 @@
-.container {
+.buyOrderList {
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  h1 {
-    font-weight: 600;
-    margin-bottom: 2rem;
-  }
 }
 
-.cards {
+.widthContainer {
   width: 100%;
   max-width: 600px;
 }

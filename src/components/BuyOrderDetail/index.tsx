@@ -2,6 +2,7 @@ import useGlobalState from "~/lib/global-state";
 import { useBuyOrder } from "~/lib/hooks";
 import { formatDateFromString, formatDollars } from "~/lib/utils";
 import Error from "../Error";
+import Heading from "../Heading";
 import Loader from "../Loader";
 import styles from "./BuyOrderDetail.module.scss";
 
@@ -25,26 +26,26 @@ const BuyOrderDetail: React.FunctionComponent<Props> = ({
 
   return (
     <div className={styles.container}>
-      <h1>Buy Order Details</h1>
+      <Heading text="Buy Order Details" />
 
       <div className={styles.card}>
         <div>
-          <p className={styles.underlined}>Order name</p>
+          <p className="underlined">Order name</p>
           <p>{buyOrder.name}</p>
         </div>
         <div>
-          <p className={styles.underlined}>Date created</p>
+          <p className="underlined">Date created</p>
           <p>{formatDateFromString(buyOrder.createdAt)}</p>
         </div>
         <div>
-          <p className={styles.underlined}>Order bydget</p>
+          <p className="underlined">Order bydget</p>
           <p>{formatDollars(buyOrder.budget)}</p>
         </div>
 
         <div></div>
 
         <div>
-          <p className={styles.underlined}>Included datasets</p>
+          <p className="underlined">Included datasets</p>
           <div className={styles.datasetsGrid}>
             {buyOrder.datasetIds.map((id) => (
               <div key={id}>
@@ -54,15 +55,15 @@ const BuyOrderDetail: React.FunctionComponent<Props> = ({
           </div>
         </div>
         <div>
-          <p className={styles.underlined}>Date created</p>
+          <p className="underlined">Date created</p>
           <p>{formatDateFromString(buyOrder.createdAt)}</p>
         </div>
         <div>
-          <p className={styles.underlined}>Date created</p>
+          <p className="underlined">Date created</p>
           <p>{formatDateFromString(buyOrder.createdAt)}</p>
         </div>
         <div>
-          <p className={styles.underlined}>Date created</p>
+          <p className="underlined">Date created</p>
           <p>{formatDateFromString(buyOrder.createdAt)}</p>
         </div>
       </div>

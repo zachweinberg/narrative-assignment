@@ -7,7 +7,7 @@ const CountrySelect: React.FunctionComponent = () => {
 
   return (
     <div className={styles.container}>
-      <p className="underlined">Included countries:</p>
+      <p className="underlined mb-10">Included countries:</p>
 
       <ul>
         {Object.entries(countries).map(([countryCode, { name, enabled }]) => {

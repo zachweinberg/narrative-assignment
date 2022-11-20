@@ -2,6 +2,7 @@ import useGlobalState from "~/lib/global-state";
 import { useCountryConfig } from "~/lib/hooks";
 import CountrySelect from "../CountrySelect";
 import DatasetCard from "../DataSetCard";
+import Heading from "../Heading";
 import styles from "./DatasetsList.module.scss";
 
 const DatasetsList: React.FunctionComponent = () => {
@@ -20,7 +21,7 @@ const DatasetsList: React.FunctionComponent = () => {
 
   return (
     <div className={styles.container}>
-      <h1>Datasets</h1>
+      <Heading text="Datasets" />
 
       <p className={styles.countryResults}>
         Showing <strong>{countryDatasets.length}</strong> results from{" "}

@@ -3,30 +3,26 @@
   grid-template-rows: 1fr 0.8fr 1fr;
   gap: 10px;
   padding: 1.5rem;
-  border: 1px solid #ccc;
+  border: $default-border;
+  box-shadow: $default-shadow;
   text-decoration: none;
-  color: black;
+  color: $primary-text;
   cursor: pointer;
   border-radius: 5px;
   &:hover {
-    opacity: 0.6;
+    border: 1px solid rgb(25, 25, 25);
   }
-}
-
-.row {
-  margin-bottom: 10px;
 }
 
 .flexRow {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px;
 }
 
 .imageRow {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
   margin-bottom: 10px;
 
   img {
@@ -41,20 +37,15 @@
   }
 }
 
-.underlined {
-  color: rgb(95, 95, 95);
-  text-decoration: underline;
-  margin-bottom: 5px;
-}
-
 .countryBadges {
   display: flex;
   gap: 10px;
 
   span {
     outline: none;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    padding: 5px 10px;
+    border: $default-border;
+    border-radius: $default-border-radius;
+    padding: 5px;
+    font-size: 0.75rem;
   }
 }

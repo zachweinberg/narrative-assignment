@@ -1,22 +1,17 @@
-.card {
+.buyOrderCard {
+  color: $primary-text;
   padding: 1.5rem;
   display: grid;
   gap: 10px;
   grid-template-columns: 1fr 1fr 1fr;
   margin-top: 0.85rem;
-  cursor: pointer;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border: $default-border;
+  border-radius: $default-border-radius;
   text-decoration: none;
-  color: #000;
+  cursor: pointer;
+  box-shadow: $default-shadow;
 
   &:hover {
     opacity: 0.6;
   }
-}
-
-.underlined {
-  color: rgb(95, 95, 95);
-  text-decoration: underline;
-  margin-bottom: 5px;
 }
