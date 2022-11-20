@@ -44,7 +44,7 @@ const DatasetCard: React.FunctionComponent<Props> = ({ dataset }: Props) => {
 
         <div className={styles.countryBadges}>
           {dataset.countries.map((countryCode) => (
-            <span>{countries[countryCode].name}</span>
+            <span key={countryCode}>{countries[countryCode].name}</span>
           ))}
         </div>
       </div>

@@ -44,17 +44,25 @@ export const fetchBuyOrders = async (): Promise<BuyOrder[]> => {
   return makeRequest("GET buy-orders", { url: "/buy-orders", method: "GET" });
 };
 
-export const deleteBuyOrder = async (buyOrderID: number) => {
-  return makeRequest(`DELETE buy-order/${buyOrderID}`, {
-    url: `/buy-orders/${buyOrderID}`,
-    method: "DELETE",
-  });
-};
-
 export const createBuyOrder = async (buyOrder: Omit<BuyOrder, "id">) => {
   return makeRequest("POST buy-order", {
     url: `/buy-orders`,
     method: "POST",
     data: buyOrder,
+  });
+};
+
+export const updateBuyOrder = async (buyOrder: BuyOrder) => {
+  return makeRequest(`PUT buy-orders/${buyOrder.id}`, {
+    url: `/buy-orders/${buyOrder.id}`,
+    method: "PUT",
+    data: buyOrder,
+  });
+};
+
+export const deleteBuyOrder = async (buyOrderID: number) => {
+  return makeRequest(`DELETE buy-order/${buyOrderID}`, {
+    url: `/buy-orders/${buyOrderID}`,
+    method: "DELETE",
   });
 };

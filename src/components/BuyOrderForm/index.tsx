@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import Button from "~/components/Button";
 import Heading from "~/components/Heading";
 import Input from "~/components/Input";
-import { createBuyOrder, fetchBuyOrder } from "~/lib/api";
+import { createBuyOrder, fetchBuyOrder, updateBuyOrder } from "~/lib/api";
 import useGlobalState from "~/lib/global-state";
 import { BuyOrder } from "~/lib/types";
 import { formatDateFromString, formatDollars } from "~/lib/utils";
@@ -45,6 +45,8 @@ const BuyOrderForm: React.FunctionComponent<Props> = ({
   }, [buyOrderID, editMode]);
 
   const onSubmit = async () => {
+    if (!buyOrder) return;
+
     if (buyOrder.name === "") {
       alert("Please enter a name.");
       return;
@@ -63,8 +65,13 @@ const BuyOrderForm: React.FunctionComponent<Props> = ({
     }
 
     try {
-      buyOrder.createdAt = DateTime.local().toISO();
-      await createBuyOrder(buyOrder);
+      if (editMode && buyOrderID) {
+        await updateBuyOrder({ ...buyOrder, id: buyOrderID });
+      } else {
+        buyOrder.createdAt = DateTime.local().toISO();
+        await createBuyOrder(buyOrder);
+      }
+
       router.push("/buy-orders");
     } catch (err) {
       console.error(err);
@@ -73,6 +80,8 @@ const BuyOrderForm: React.FunctionComponent<Props> = ({
   };
 
   const toggleDataset = (datasetID: number) => {
+    if (!buyOrder) return;
+
     let currIDs = buyOrder.datasetIds;
 
     if (currIDs.includes(datasetID)) {
@@ -88,6 +97,8 @@ const BuyOrderForm: React.FunctionComponent<Props> = ({
   };
 
   const toggleCountry = (countryCode: string) => {
+    if (!buyOrder) return;
+
     let currCountries = buyOrder.countries;
 
     if (currCountries.includes(countryCode)) {
@@ -103,6 +114,8 @@ const BuyOrderForm: React.FunctionComponent<Props> = ({
   };
 
   const CountryBadge = ({ countryCode }: { countryCode: string }) => {
+    if (!buyOrder) return null;
+
     return (
       <span
         style={{ cursor: "pointer" }}
@@ -165,28 +178,30 @@ const BuyOrderForm: React.FunctionComponent<Props> = ({
         <div className="mb-20">
           <p className="underlined mb-10">Included datasets</p>
           <div className={styles.datasetsGrid}>
-            {datasets.map((dataset) => (
-              <div
-                className={
-                  buyOrder.datasetIds.some((id) => id === dataset.id)
-                    ? styles.selectedDataSet
-                    : ""
-                }
-                key={dataset.id}
-                onClick={() => toggleDataset(dataset.id)}
-              >
-                <Image
-                  src={dataset.thumbnailUrl}
-                  width={40}
-                  height={40}
-                  alt="Data set image"
-                />
-                <div>
-                  <p className="mb-5">{dataset.label}</p>
-                  <p>{formatDollars(dataset.costPerRecord)} per record</p>
+            {datasets
+              .sort((a, b) => a.name.localeCompare(b.name))
+              .map((dataset) => (
+                <div
+                  className={
+                    buyOrder.datasetIds.some((id) => id === dataset.id)
+                      ? styles.selectedDataSet
+                      : ""
+                  }
+                  key={dataset.id}
+                  onClick={() => toggleDataset(dataset.id)}
+                >
+                  <Image
+                    src={dataset.thumbnailUrl}
+                    width={40}
+                    height={40}
+                    alt="Data set image"
+                  />
+                  <div>
+                    <p className="mb-5">{dataset.label}</p>
+                    <p>{formatDollars(dataset.costPerRecord)} per record</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
 

@@ -9,8 +9,7 @@ const DatasetsList: React.FunctionComponent = () => {
   const datasets = useGlobalState((state) => state.datasets);
   const { showAll, enabledCountryCodes, countryListString } =
     useCountryConfig();
-  console.log(enabledCountryCodes);
-  console.log(datasets);
+
   const countryDatasets = showAll
     ? datasets
     : datasets.filter((dataset) =>
