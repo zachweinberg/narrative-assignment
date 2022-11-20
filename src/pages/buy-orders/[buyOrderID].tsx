@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import { useRouter } from "next/router";
-import BuyOrderDetail from "~/components/BuyOrderDetail";
+import BuyOrderDetail from "../../components/BuyOrderDetail";
 
 const BuyOrderDetailPage: NextPage = () => {
   const router = useRouter();

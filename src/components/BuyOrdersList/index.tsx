@@ -1,11 +1,11 @@
 import { useRouter } from "next/router";
-import Button from "~/components/Button";
-import BuyOrderCard from "~/components/BuyOrderCard";
-import CountrySelect from "~/components/CountrySelect";
-import Error from "~/components/Error";
-import Heading from "~/components/Heading";
-import Loader from "~/components/Loader";
-import { useBuyOrders, useCountryConfig } from "~/lib/hooks";
+import { useBuyOrders, useCountryConfig } from "../../lib/hooks";
+import Button from "../Button";
+import BuyOrderCard from "../BuyOrderCard";
+import CountrySelect from "../CountrySelect";
+import Error from "../Error";
+import Heading from "../Heading";
+import Loader from "../Loader";
 import styles from "./BuyOrdersList.module.scss";
 
 const BuyOrdersList: React.FunctionComponent = () => {
@@ -17,7 +17,7 @@ const BuyOrdersList: React.FunctionComponent = () => {
   const countryBuyOrders = showAll
     ? buyOrders
     : buyOrders.filter((order) =>
-        order.countries.some((countryCode) =>
+        order.countries.some((countryCode: string) =>
           enabledCountryCodes.includes(countryCode)
         )
       );

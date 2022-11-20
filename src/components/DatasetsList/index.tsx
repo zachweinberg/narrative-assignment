@@ -1,5 +1,5 @@
-import useGlobalState from "~/lib/global-state";
-import { useCountryConfig } from "~/lib/hooks";
+import useGlobalState from "../../lib/global-state";
+import { useCountryConfig } from "../../lib/hooks";
 import CountrySelect from "../CountrySelect";
 import DatasetCard from "../DataSetCard";
 import Heading from "../Heading";

@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import BuyOrdersList from "~/components/BuyOrdersList";
+import BuyOrdersList from "../../components/BuyOrdersList";
 
 const BuyOrdersPage: NextPage = () => {
   return <BuyOrdersList />;

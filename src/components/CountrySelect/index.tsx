@@ -1,4 +1,4 @@
-import useGlobalState from "~/lib/global-state";
+import useGlobalState from "../../lib/global-state";
 import styles from "./CountrySelect.module.scss";
 
 const CountrySelect: React.FunctionComponent = () => {

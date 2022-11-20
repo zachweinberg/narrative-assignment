@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { BuyOrder } from "~/lib/types";
-import { formatDateFromString, formatDollars } from "~/lib/utils";
+import { BuyOrder } from "../../lib/types";
+import { formatDateFromString, formatDollars } from "../../lib/utils";
 import styles from "./BuyOrderCard.module.scss";
 
 interface Props {

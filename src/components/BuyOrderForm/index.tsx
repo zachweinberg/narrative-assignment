@@ -5,13 +5,14 @@ import { DateTime } from "luxon";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import Button from "~/components/Button";
-import Heading from "~/components/Heading";
-import Input from "~/components/Input";
-import { createBuyOrder, fetchBuyOrder, updateBuyOrder } from "~/lib/api";
-import useGlobalState from "~/lib/global-state";
-import { BuyOrder } from "~/lib/types";
-import { formatDateFromString, formatDollars } from "~/lib/utils";
+import Button from "../../components/Button";
+import Heading from "../../components/Heading";
+import Input from "../../components/Input";
+import { createBuyOrder, fetchBuyOrder, updateBuyOrder } from "../../lib/api";
+import { logError } from "../../lib/errors";
+import useGlobalState from "../../lib/global-state";
+import { BuyOrder } from "../../lib/types";
+import { formatDateFromString, formatDollars } from "../../lib/utils";
 import styles from "./BuyOrderForm.module.scss";
 
 interface Props {
@@ -74,7 +75,7 @@ const BuyOrderForm: React.FunctionComponent<Props> = ({
 
       router.push("/buy-orders");
     } catch (err) {
-      console.error(err);
+      logError(err);
       alert("Could not create save buy order.");
     }
   };

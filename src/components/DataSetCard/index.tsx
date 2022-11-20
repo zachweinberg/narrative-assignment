@@ -1,8 +1,8 @@
 import cn from "classnames";
 import Image from "next/image";
-import useGlobalState from "~/lib/global-state";
-import { Dataset } from "~/lib/types";
-import { formatDollars } from "~/lib/utils";
+import useGlobalState from "../../lib/global-state";
+import { Dataset } from "../../lib/types";
+import { formatDollars } from "../../lib/utils";
 import styles from "./DatasetCard.module.scss";
 
 interface Props {

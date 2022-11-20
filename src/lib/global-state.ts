@@ -1,6 +1,6 @@
 import create from "zustand";
-import { fetchCountryData, fetchDatasets } from "~/lib/api";
-import { CountryMap, Dataset } from "~/lib/types";
+import { fetchCountryData, fetchDatasets } from "../lib/api";
+import { CountryMap, Dataset } from "../lib/types";
 
 // Global state to store countries config and datasets
 

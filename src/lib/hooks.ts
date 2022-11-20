@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
-import { fetchBuyOrder, fetchBuyOrders } from "~/lib/api";
-import { BuyOrder } from "~/lib/types";
+import { fetchBuyOrder, fetchBuyOrders } from "../lib/api";
+import { BuyOrder } from "../lib/types";
 import useGlobalState from "./global-state";
 
 export const useBuyOrders = () => {

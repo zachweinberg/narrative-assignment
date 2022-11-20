@@ -1,9 +1,10 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { deleteBuyOrder } from "~/lib/api";
-import useGlobalState from "~/lib/global-state";
-import { useBuyOrder } from "~/lib/hooks";
-import { formatDateFromString, formatDollars } from "~/lib/utils";
+import { deleteBuyOrder } from "../../lib/api";
+import { logError } from "../../lib/errors";
+import useGlobalState from "../../lib/global-state";
+import { useBuyOrder } from "../../lib/hooks";
+import { formatDateFromString, formatDollars } from "../../lib/utils";
 import Button from "../Button";
 import Error from "../Error";
 import Heading from "../Heading";
@@ -62,7 +63,7 @@ const BuyOrderDetail: React.FunctionComponent<Props> = ({
         router.push("/buy-orders");
       }
     } catch (err) {
-      console.error(err);
+      logError(err);
       alert("Something went wrong while deleting this buy order.");
     }
   };
