@@ -1,33 +1,22 @@
-import { useMemo } from "react";
 import Loader from "~/components/Loader";
-import useGlobalState from "~/lib/global-state";
-import { useBuyOrders } from "~/lib/hooks";
+import { useBuyOrders, useCountryConfig } from "~/lib/hooks";
 import BuyOrderCard from "../BuyOrderCard";
 import CountrySelect from "../CountrySelect";
 import Error from "../Error";
 import styles from "./BuyOrdersList.module.scss";
 
 const BuyOrdersList: React.FunctionComponent = () => {
-  const countries = useGlobalState((state) => state.countries);
   const { buyOrders, loading, error } = useBuyOrders();
+  const { showAll, enabledCountryCodes, countryListString } =
+    useCountryConfig();
 
-  const allEnabled = Object.keys(countries).every(
-    (code) => countries[code].enabled
-  );
-
-  const allDisabled = Object.keys(countries).every(
-    (code) => !countries[code].enabled
-  );
-
-  const countryBuyOrders = useMemo(() => {
-    if (allEnabled || allDisabled) {
-      return buyOrders;
-    }
-
-    return buyOrders.filter((order) =>
-      order.countries.some((code) => countries[code].enabled)
-    );
-  }, [buyOrders, countries]);
+  const countryBuyOrders = showAll
+    ? buyOrders
+    : buyOrders.filter((order) =>
+        order.countries.some((countryCode) =>
+          enabledCountryCodes.includes(countryCode)
+        )
+      );
 
   if (error) {
     return <Error message="Could not load buy orders." />;
@@ -37,13 +26,6 @@ const BuyOrdersList: React.FunctionComponent = () => {
     return <Loader />;
   }
 
-  const countryList = allDisabled
-    ? "all countries"
-    : Object.values(countries)
-        .filter(({ enabled }) => !!enabled)
-        .map((val) => val.name)
-        .join(" & ");
-
   return (
     <div className={styles.container}>
       <h1>Your Buy Orders</h1>
@@ -51,7 +33,7 @@ const BuyOrdersList: React.FunctionComponent = () => {
       <div className={styles.cards}>
         <p>
           Showing <strong>{countryBuyOrders.length}</strong> results from{" "}
-          <strong> {countryList}</strong>
+          <strong> {countryListString}</strong>
         </p>
 
         {countryBuyOrders.map((buyOrder) => (

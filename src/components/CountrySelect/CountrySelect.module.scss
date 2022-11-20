@@ -1,10 +1,13 @@
 .container {
   padding: 0.7rem 1rem;
-  position: absolute;
+  position: fixed;
   bottom: 0;
+  margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 10px;
-  margin: 2rem;
+  z-index: 1000;
+  background-color: #fff;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
   p {
     text-decoration: underline;

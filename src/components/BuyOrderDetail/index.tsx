@@ -1,3 +1,4 @@
+import useGlobalState from "~/lib/global-state";
 import { useBuyOrder } from "~/lib/hooks";
 import { formatDateFromString, formatDollars } from "~/lib/utils";
 import Error from "../Error";
@@ -11,6 +12,7 @@ interface Props {
 const BuyOrderDetail: React.FunctionComponent<Props> = ({
   buyOrderID,
 }: Props) => {
+  const datasets = useGlobalState((state) => state.datasets);
   const { buyOrder, loading, error } = useBuyOrder(buyOrderID);
 
   if (loading) {
@@ -38,12 +40,16 @@ const BuyOrderDetail: React.FunctionComponent<Props> = ({
           <p className={styles.underlined}>Order bydget</p>
           <p>{formatDollars(buyOrder.budget)}</p>
         </div>
+
         <div></div>
+
         <div>
           <p className={styles.underlined}>Included datasets</p>
           <div className={styles.datasetsGrid}>
             {buyOrder.datasetIds.map((id) => (
-              <p>{id}</p>
+              <div key={id}>
+                <img src={datasets[id].thumbnailUrl} />
+              </div>
             ))}
           </div>
         </div>

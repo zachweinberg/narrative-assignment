@@ -1,7 +1,8 @@
 import { NextPage } from "next";
+import DatasetsList from "~/components/DatasetsList";
 
-const Datasets: NextPage = () => {
-  return <p>hia</p>;
+const DatasetsPage: NextPage = () => {
+  return <DatasetsList />;
 };
 
-export default Datasets;
+export default DatasetsPage;

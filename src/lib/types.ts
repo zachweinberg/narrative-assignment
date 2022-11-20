@@ -12,11 +12,35 @@ export interface Country {
   name: string;
 }
 
-export type CountryData = Country & {
-  storedData: CountryStoredData[];
-};
-
-interface CountryStoredData {
-  datasetId: number;
-  recordCount: number;
+export interface Dataset {
+  id: number;
+  name: string;
+  label: string;
+  description: string;
+  thumbnailUrl: string;
+  costPerRecord: number;
+  countries: string[];
+  totalRecordCount: number;
 }
+
+export interface CountryData {
+  name: string;
+  enabled: boolean;
+}
+
+export type CountryMap = Record<string, CountryData>;
+
+export type FetchCountryDataResponse = Array<{
+  countryCode: string;
+  name: string;
+  storedData: Array<{ datasetId: number; recordCount: number }>;
+}>;
+
+export type FetchDatasetsResponse = Array<{
+  id: number;
+  name: string;
+  label: string;
+  description: string;
+  thumbnailUrl: string;
+  costPerRecord: number;
+}>;

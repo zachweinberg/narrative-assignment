@@ -6,12 +6,14 @@ import useGlobalState from "~/lib/global-state";
 import "../styles/globals.scss";
 
 export default function App({ Component, pageProps }: AppProps) {
-  const loadCountryData = useGlobalState((state) => state.loadCountryData);
+  const loadCountriesAndDatasets = useGlobalState(
+    (state) => state.loadCountriesAndDatasets
+  );
 
   useEffect(() => {
-    loadCountryData().catch((err) => {
+    loadCountriesAndDatasets().catch((err) => {
       logError(err);
-      alert("Could not load country data.");
+      alert("Could not load initial data.");
     });
   }, []);
 

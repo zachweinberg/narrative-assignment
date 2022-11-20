@@ -1,6 +1,10 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { logError } from "./errors";
-import { BuyOrder, CountryData } from "./types";
+import {
+  BuyOrder,
+  FetchCountryDataResponse,
+  FetchDatasetsResponse,
+} from "./types";
 
 // This should be placed in an .env file,
 //  but hardcoded for the purposes of this assignment
@@ -21,8 +25,12 @@ const makeRequest = async (entityName: string, opts: AxiosRequestConfig) => {
   }
 };
 
-export const fetchCountryData = async (): Promise<CountryData[]> => {
+export const fetchCountryData = async (): Promise<FetchCountryDataResponse> => {
   return makeRequest("countries", { url: "/countries", method: "GET" });
+};
+
+export const fetchDatasets = async (): Promise<FetchDatasetsResponse> => {
+  return makeRequest("datasets", { url: "/datasets", method: "GET" });
 };
 
 export const fetchBuyOrder = async (buyOrderID: number): Promise<BuyOrder> => {
