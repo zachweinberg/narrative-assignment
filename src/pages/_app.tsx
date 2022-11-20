@@ -9,6 +9,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const loadCountriesAndDatasets = useGlobalState(
     (state) => state.loadCountriesAndDatasets
   );
+  const loading = useGlobalState((state) => state.loading);
 
   useEffect(() => {
     loadCountriesAndDatasets().catch((err) => {
@@ -16,6 +17,8 @@ export default function App({ Component, pageProps }: AppProps) {
       alert("Could not load initial data.");
     });
   }, []);
+
+  if (loading) return null;
 
   return (
     <Layout>

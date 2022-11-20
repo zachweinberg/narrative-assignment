@@ -9,12 +9,13 @@ interface GlobalState {
   datasets: Dataset[];
   toggleCountry: (countryCode: string) => void;
   loadCountriesAndDatasets: () => Promise<void>;
+  loading: boolean;
 }
 
 const useGlobalState = create<GlobalState>((set) => ({
   countries: {},
   datasets: [],
-
+  loading: true,
   toggleCountry: (countryCode) => {
     set((state) => ({
       countries: {
@@ -78,6 +79,7 @@ const useGlobalState = create<GlobalState>((set) => ({
     set({
       countries: countryMap,
       datasets: finalDatasets,
+      loading: false,
     });
   },
 }));
