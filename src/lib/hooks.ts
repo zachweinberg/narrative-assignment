@@ -1,3 +1,4 @@
+import { DateTime } from "luxon";
 import { useEffect, useMemo, useState } from "react";
 import { fetchBuyOrder, fetchBuyOrders } from "../lib/api";
 import { BuyOrder } from "../lib/types";
@@ -10,7 +11,15 @@ export const useBuyOrders = () => {
 
   useEffect(() => {
     fetchBuyOrders()
-      .then((orders) => setBuyOrders(orders))
+      .then((orders) =>
+        setBuyOrders(
+          orders.sort(
+            (a, b) =>
+              DateTime.fromISO(b.createdAt).toMillis() -
+              DateTime.fromISO(a.createdAt).toMillis()
+          )
+        )
+      )
       .catch((err) => setError(true))
       .finally(() => setLoading(false));
   }, []);

@@ -163,14 +163,17 @@ const BuyOrderForm: React.FunctionComponent<Props> = ({
         <div className={styles.row}>
           <div>
             <p className="underlined mb-5">Order budget</p>
-            <Input
-              type="number"
-              placeholder="Budget"
-              value={buyOrder.budget}
-              onChange={(e) =>
-                setBuyOrder({ ...buyOrder, budget: parseInt(e.target.value) })
-              }
-            />
+            <div className={styles.flexRow}>
+              <span>$</span>
+              <Input
+                type="number"
+                placeholder="Budget"
+                value={buyOrder.budget}
+                onChange={(e) =>
+                  setBuyOrder({ ...buyOrder, budget: parseInt(e.target.value) })
+                }
+              />
+            </div>
           </div>
 
           <div></div>

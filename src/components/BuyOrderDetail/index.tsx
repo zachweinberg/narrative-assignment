@@ -103,7 +103,7 @@ const BuyOrderDetail: React.FunctionComponent<Props> = ({
           <p className="underlined mb-10">Included countries</p>
           <div className={styles.countryBadges}>
             {buyOrder.countries.map((countryCode) => (
-              <span>{countries[countryCode].name}</span>
+              <span key={countryCode}>{countries[countryCode].name}</span>
             ))}
           </div>
         </div>

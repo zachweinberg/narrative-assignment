@@ -48,6 +48,12 @@
   margin-bottom: 1.3rem;
 }
 
+.flexRow {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
 .countryBadges {
   display: flex;
   gap: 10px;
