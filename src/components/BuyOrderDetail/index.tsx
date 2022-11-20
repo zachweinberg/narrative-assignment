@@ -1,4 +1,6 @@
 import { useBuyOrder } from "~/lib/hooks";
+import { formatDateFromString, formatDollars } from "~/lib/utils";
+import Error from "../Error";
 import Loader from "../Loader";
 import styles from "./BuyOrderDetail.module.scss";
 
@@ -11,17 +13,53 @@ const BuyOrderDetail: React.FunctionComponent<Props> = ({
 }: Props) => {
   const { buyOrder, loading, error } = useBuyOrder(buyOrderID);
 
-  if (error) {
-    return <p>Could not load buy order.</p>;
-  }
-
   if (loading) {
     return <Loader />;
+  }
+
+  if (error || !buyOrder) {
+    return <Error message={"Could not load buy order."} />;
   }
 
   return (
     <div className={styles.container}>
       <h1>Buy Order Details</h1>
+
+      <div className={styles.card}>
+        <div>
+          <p className={styles.underlined}>Order name</p>
+          <p>{buyOrder.name}</p>
+        </div>
+        <div>
+          <p className={styles.underlined}>Date created</p>
+          <p>{formatDateFromString(buyOrder.createdAt)}</p>
+        </div>
+        <div>
+          <p className={styles.underlined}>Order bydget</p>
+          <p>{formatDollars(buyOrder.budget)}</p>
+        </div>
+        <div></div>
+        <div>
+          <p className={styles.underlined}>Included datasets</p>
+          <div className={styles.datasetsGrid}>
+            {buyOrder.datasetIds.map((id) => (
+              <p>{id}</p>
+            ))}
+          </div>
+        </div>
+        <div>
+          <p className={styles.underlined}>Date created</p>
+          <p>{formatDateFromString(buyOrder.createdAt)}</p>
+        </div>
+        <div>
+          <p className={styles.underlined}>Date created</p>
+          <p>{formatDateFromString(buyOrder.createdAt)}</p>
+        </div>
+        <div>
+          <p className={styles.underlined}>Date created</p>
+          <p>{formatDateFromString(buyOrder.createdAt)}</p>
+        </div>
+      </div>
     </div>
   );
 };

@@ -7,6 +7,8 @@
   cursor: pointer;
   border: 1px solid #ccc;
   border-radius: 5px;
+  text-decoration: none;
+  color: #000;
 
   &:hover {
     opacity: 0.75;
@@ -14,6 +16,7 @@
 }
 
 .underlined {
+  color: rgb(95, 95, 95);
   text-decoration: underline;
   margin-bottom: 5px;
 }

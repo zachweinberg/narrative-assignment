@@ -5,7 +5,7 @@ import { BuyOrder } from "~/lib/types";
 export const useBuyOrders = () => {
   const [buyOrders, setBuyOrders] = useState<BuyOrder[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(true);
 
   useEffect(() => {
     fetchBuyOrders()

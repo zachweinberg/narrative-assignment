@@ -3,20 +3,22 @@ import styles from "./CountrySelect.module.scss";
 
 const CountrySelect: React.FunctionComponent = () => {
   const countries = useGlobalState((state) => state.countries);
-  const selectedCountries = useGlobalState((state) => state.selectedCountries);
-  const setSelectedCountries = useGlobalState(
-    (state) => state.setSelectedCountries
-  );
+  const toggleCountry = useGlobalState((state) => state.toggleCountry);
 
   return (
     <div className={styles.container}>
-      <p className={styles.underlined}>Included countries:</p>
+      <p className="underlined">Included countries:</p>
 
       <ul>
-        {Object.entries(countries).map(([countryCode, name]) => {
+        {Object.entries(countries).map(([countryCode, { name, enabled }]) => {
           return (
             <li key={countryCode}>
-              <button>{name}</button>
+              <button
+                className={enabled ? styles.enabled : ""}
+                onClick={() => toggleCountry(countryCode)}
+              >
+                {name}
+              </button>
             </li>
           );
         })}

@@ -9,7 +9,26 @@
   }
 }
 
-.cards {
+.card {
   width: 100%;
   max-width: 600px;
+  background-color: #ccc;
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 2fr 1fr 1fr;
+  gap: 20px;
+}
+
+.datasetsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 10px;
+}
+
+.underlined {
+  color: rgb(95, 95, 95);
+  text-decoration: underline;
+  margin-bottom: 5px;
 }

@@ -11,15 +11,22 @@
     margin-bottom: 10px;
   }
 
+  .enabled {
+    border: 1px solid black;
+    opacity: 1 !important;
+  }
+
   ul {
     display: flex;
     list-style: none;
     gap: 12px;
 
     button {
+      outline: none;
       border: 1px solid #ccc;
       border-radius: 10px;
       padding: 5px 10px;
+      opacity: 0.5;
       cursor: pointer;
       &:hover {
         opacity: 0.75;

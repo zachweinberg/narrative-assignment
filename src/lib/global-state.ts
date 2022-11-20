@@ -2,17 +2,24 @@ import create from "zustand";
 import { fetchCountryData } from "./api";
 
 interface GlobalState {
-  countries: Record<string, string>;
-  selectedCountries: string[];
-  setSelectedCountries: string[];
+  countries: Record<string, { name: string; enabled: boolean }>;
+  toggleCountry: (countryCode: string) => void;
   loadCountryData: () => Promise<void>;
 }
 
 const useGlobalState = create<GlobalState>((set) => ({
   countries: {},
 
-  selectedCountries: [],
-  setSelectedCountries: [],
+  toggleCountry: (countryCode) =>
+    set((state) => ({
+      countries: {
+        ...state.countries,
+        [countryCode]: {
+          ...state.countries[countryCode],
+          enabled: !state.countries[countryCode].enabled,
+        },
+      },
+    })),
 
   loadCountryData: async () => {
     const countryData = await fetchCountryData();
@@ -20,12 +27,14 @@ const useGlobalState = create<GlobalState>((set) => ({
     const countries = countryData.reduce(
       (accum, c) => ({
         ...accum,
-        [c.countryCode]: c.name,
+        [c.countryCode]: { name: c.name, enabled: true },
       }),
       {}
     );
 
-    set({ countries });
+    set({
+      countries,
+    });
   },
 }));
 
